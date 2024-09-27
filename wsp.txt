@@ -1,0 +1,33 @@
+using System;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Microsoft.SharePoint;
+using Microsoft.SharePoint.WebControls;
+
+namespace MyNamespace
+{
+    public class SearchWebPart : WebPart
+    {
+        // Create a text box to contain the search query.
+        TextBox queryBox = new TextBox();
+
+        // Create the search button.
+        Button searchButton = new Button();
+
+        // Create the search results GridView.
+        GridView searchResults = new GridView();
+
+        protected override void CreateChildControls()
+        {
+            // Set the properties of the text box.
+            queryBox.ID = "queryBox";
+            queryBox.CssClass = "searchTextBox";
+            queryBox.Width = Unit.Pixel(200);
+
+            // Set the properties of the search button.
+            searchButton.ID = "searchButton";
+            searchButton.Text = "Search";
+            searchButton.CommandName = "Search";
+            searchButton.Click += new EventHandler(searchButton_Click);
+
+            // Set the properties of the
